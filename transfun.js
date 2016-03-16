@@ -214,6 +214,18 @@ var global, exports; // NPM support [github#1]
         }
     });
     
+    tpub( 'forEach', {
+        arity : 1
+        , specgen : function ( /*string*/action ) {
+            return { loopleftright : {
+                morph                   : 'array'
+		, keep_current_instance : true
+		, bodyadd               : tfun.statement( action, 'current', 'v', 'k' )
+            }};
+        }
+	
+    });
+
     tpub( 'each', {
         arity : 1
         , specgen : function ( /*string*/action ) {
